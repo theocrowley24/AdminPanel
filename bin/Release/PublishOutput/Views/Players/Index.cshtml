@@ -1,0 +1,51 @@
+﻿
+@model AdminPanel.Models.Players
+
+@{
+    ViewBag.Title = "Players";
+}
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Players.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>Players</h2>
+</div>
+
+<div class="players-table-parent">
+    
+    <div class="player-name-search-box-parent">
+        @using (Html.BeginForm("Index", "Players", FormMethod.Get))
+        {
+            <input type="text" placeholder="Search..." name="playerSearchName" />
+            <select name="playerCount" onchange="this.form.submit()">
+                <!-- Dosen't work for 5 atm -->
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        }
+    </div>
+
+    <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder">
+        <table width="100%" align="center" cellpadding="2" cellspacing="2" border="0" bgcolor="#006494">
+            <tr align="left" style="background-color:#006494;color:White;">
+                <td>UID</td>
+                <td>Name</td>
+                <td>Cash</td>
+                <td>Bank account</td>
+                <td>NATO level</td>
+                <td>Medic level</td>
+                <td>Admin level</td>
+                <td>Warning points</td>
+                <td>Edit</td>
+            </tr>
+            @Html.Raw(Model.getPlayers())
+        </table>
+    </asp:Content>
+</div>

@@ -1,0 +1,116 @@
+﻿@model AdminPanel.Models.Staff
+
+
+@{
+    ViewBag.Title = "Staff";
+}
+
+@using AdminPanel.Helpers
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Players.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/EditStaff.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Staff.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>Staff</h2>
+</div>
+
+<!-- Trigger/Open The Modal -->
+@if (Permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.CreateStaff))
+{
+    <button id="myBtn" class="create-staff">Create staff</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="form-parent-stats">
+                @using (Html.BeginForm("CreateStaff", "Staff", FormMethod.Post))
+                {
+                    <div class="input-box"> <p>Username </p> @Html.TextBoxFor(model => model.newStaffUsername, new { value = Model.newStaffPassword }) </div>
+                    <select name="accessLevel" id="accessLevel">
+                        @foreach (var item in Permissions.getRanks())
+                        {
+                            <option value="@item">
+                                @item
+                            </option>
+
+                        }
+                    </select>
+                    <div class="input-box"> <p>Password </p> @Html.PasswordFor(model => model.newStaffPassword, new { value = Model.newStaffPassword }) </div>
+                    <div class="input-box"> <p>Password (again) </p> @Html.PasswordFor(model => model.newStaffPasswordRepeat, new { value = Model.newStaffPasswordRepeat }) </div> <br />
+                    <input type="submit" id="update" value="Create" />
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+}
+
+
+
+<div class="players-table-parent">
+
+    <div class="player-name-search-box-parent">
+        @using (Html.BeginForm("Index", "Staff", FormMethod.Get))
+        {
+            <input type="text" placeholder="Search..." name="staffSearchName" />
+            <select name="staffCount" onchange="this.form.submit()">
+                <!-- Dosen't work for 5 atm -->
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        }
+    </div>
+
+    <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder">
+        <table width="100%" align="center" cellpadding="2" cellspacing="2" border="0" bgcolor="#006494">
+            <tr align="left" style="background-color:#006494;color:White;">
+                <td>ID</td>
+                <td>Username</td>
+                <td>Access level</td>
+                <td>Banned</td>
+                <td>Edit</td>
+            </tr>
+            @Html.Raw(Model.getStaff())
+        </table>
+    </asp:Content>
+</div>
+

@@ -1,0 +1,294 @@
+﻿@using AdminPanel.Helpers
+
+@{
+    @model AdminPanel.Models.EditPlayer
+    ViewBag.Title = "Edit player";
+    
+
+    Permissions permissions = new Permissions();
+    permissions.setupPerms();
+}
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/EditPlayer.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>@Model.name</h2>
+</div>
+
+<div class="info-parent">
+
+    <div class="tab">
+        <button id="defaultOpen" class="tab-links" onclick="openTab(event, 'info')">Info</button>
+        <button class="tab-links" onclick="openTab(event, 'stats')">Stats</button>
+        <button class="tab-links" onclick="openTab(event, 'licenses')">Licenses</button>
+        <button class="tab-links" onclick="openTab(event, 'gear')">Gear</button>
+    </div>
+
+    <div id="info" class="tab-content">
+        <h3>UID: @Model.uid</h3>
+        <h3>PID: @Model.pid</h3>
+        <h3>Aliases: @Model.aliases</h3>     
+        <h3>Join date: @Model.insertTime</h3>
+        <h3>Last seen: @Model.lastSeen</h3>
+    </div>
+
+    <div id="stats" class="tab-content">
+        <div class="form-parent-stats">
+            @using (Html.BeginForm("UpdateStats", "Players", FormMethod.Post))
+            {
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerCash))
+                {
+                    <div class="input-box"> <p>Cash </p> @Html.TextBoxFor(model => model.cash, new { value = Model.cash }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerBank))
+                {
+                    <div class="input-box"> <p>Bank account </p> @Html.TextBoxFor(model => model.bankAccount, new { value = Model.bankAccount }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerNATOLevel))
+                {
+                    <div class="input-box"> <p>NATO level </p> @Html.TextBoxFor(model => model.copLevel, new { value = Model.copLevel }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerMedicLevel))
+                {
+                    <div class="input-box"> <p>Medic level </p> @Html.TextBoxFor(model => model.medicLevel, new { value = Model.medicLevel }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerAdminLevel))
+                {
+                    <div class="input-box"> <p>Admin level </p> @Html.TextBoxFor(model => model.adminLevel, new { value = Model.adminLevel }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerArrested))
+                {
+                    <div class="input-box"> <p>Arrested </p> @Html.TextBoxFor(model => model.arrested, new { value = Model.arrested }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerBlacklist))
+                {
+                    <div class="input-box"> <p>Blacklist </p> @Html.TextBoxFor(model => model.blacklist, new { value = Model.blacklist }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerAlive))
+                {
+                    <div class="input-box"> <p>Alive </p> @Html.TextBoxFor(model => model.alive, new { value = Model.alive }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditEXPLevel))
+                {
+                    <div class="input-box"> <p>EXP level </p> @Html.TextBoxFor(model => model.expLevel, new { value = Model.expLevel }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditEXPTotal))
+                {
+                    <div class="input-box"> <p>EXP total </p> @Html.TextBoxFor(model => model.expTotal, new { value = Model.expTotal }) </div>
+                }
+
+                if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditEXPPerkPoints))
+                {
+                    <div class="input-box"> <p>EXP perk points </p> @Html.TextBoxFor(model => model.expPerkPoints, new { value = Model.expPerkPoints }) </div> <br />
+                }
+                <br />
+
+                @Html.HiddenFor(model => model.uid, new { value = Model.uid })
+                <input type="submit" id="update" value="Update" />
+            }
+        </div>
+    </div>
+
+    <div id="licenses" class="tab-content">
+       @if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerGear))
+       {
+        <div class="toggle-buttons">
+            @using (Html.BeginForm("UpdateLicenses", "Players", FormMethod.Post))
+            {
+
+                //THINK OF A BETTER WAY OF DOING THIS YOU IDIOT!!!
+
+
+                foreach (var item in Model.convertLicenses(Model.civLicenses))
+                {
+                    if (item.hasLicense == 1)
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", true, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", false, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                       </div>
+                    }
+
+                }
+
+                foreach (var item in Model.convertLicenses(Model.copLicenses))
+                {
+                    if (item.hasLicense == 1)
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", true, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", false, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                        </div>
+                    }
+
+                }
+
+                foreach (var item in Model.convertLicenses(Model.medicLicenses))
+                {
+                    if (item.hasLicense == 1)
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", true, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="toggle-button">
+                            <span>@Html.CheckBox("licenses", false, new { id = item.licenseName }) @Html.Label(Model.licenseDisplayNames[item.licenseName], new { @for = item.licenseName })</span>
+                        </div>
+                    }
+
+                }
+                <input type="hidden" name="uid" value="@Model.uid"/>
+                <br /><input type="submit" id="update-licenses" value="Update" />
+            }
+
+        </div>
+       }
+       else
+       {
+           <h3>You lack the permissions</h3>
+       }
+    </div>
+
+    <div id="gear" class="tab-content">
+        @if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.EditPlayerGear))
+        {
+            using (Html.BeginForm("UpdateGear", "Players", FormMethod.Post))
+            {
+                <div class="gear-box"> @Html.TextAreaFor(model => model.civGear, new { value = Model.civGear })</div> <br />
+                <div class="gear-box"> @Html.TextAreaFor(model => model.copGear, new { value = Model.copGear })</div> <br />
+                <div class="gear-box"> @Html.TextAreaFor(model => model.medicGear, new { value = Model.medicGear })</div> <br />
+            }
+        } else
+        {
+            <h3>You lack the permissions</h3>
+        }
+    </div>
+</div>
+
+
+<div class="page-sub-title">
+    <h2>Vehicles</h2>
+</div>
+
+<div class="vehicles-table-parent">
+
+    <div class="player-name-search-box-parent">
+        @using (Html.BeginForm("EditPlayer", "Players", FormMethod.Get))
+        {
+            <select name="vehicleCount" onchange="this.form.submit()">
+                <!-- Dosen't work for 5 atm -->
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+            <input type="hidden" name="uid" value="@Model.uid" />
+        }
+    </div>
+
+    <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder">
+        <table width="100%" align="center" cellpadding="2" cellspacing="2" border="0" bgcolor="#006494">
+            <tr align="left" style="background-color:#006494;color:White;">
+                <td>ID</td>
+                <td>Side</td>
+                <td>Class name</td>
+                <td>Type</td>
+                <td>Alive</td>
+                <td>Blacklist</td>
+                <td>Active</td>
+                <td>PID</td>
+                <td>Edit</td>
+            </tr>
+            @Html.Raw(Model.getVehicles())
+        </table>
+    </asp:Content>
+</div>
+
+
+<div class="page-sub-title">
+    <h2>Houses</h2>
+</div>
+
+<div class="vehicles-table-parent">
+
+    <div class="player-name-search-box-parent">
+        @using (Html.BeginForm("EditPlayer", "Players", FormMethod.Get))
+        {
+            <select name="houseCount" onchange="this.form.submit()">
+                <!-- Dosen't work for 5 atm -->
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+            <input type="hidden" name="uid" value="@Model.uid" />
+        }
+    </div>
+
+    <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder">
+        <table width="100%" align="center" cellpadding="2" cellspacing="2" border="0" bgcolor="#006494">
+            <tr align="left" style="background-color:#006494;color:White;">
+                <td>ID</td>
+                <td>PID</td>
+                <td>Owner</td>
+                <td>Garage</td>
+                <td>Insert time</td>
+                <td>Edit</td>
+            </tr>
+            @Html.Raw(Model.getHouses())
+        </table>
+    </asp:Content>
+</div>
+
+<script>
+
+    //JS for controlling the tabs
+
+    function openTab(event, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-links");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

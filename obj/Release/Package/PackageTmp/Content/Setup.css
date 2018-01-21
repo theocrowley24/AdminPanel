@@ -1,0 +1,84 @@
+﻿.form-parent input {
+    display: inline-block;
+}
+
+.form-parent input[type="text"] {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}
+
+.form-parent input[type="number"] {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}
+
+.form-parent input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.form-parent h3 {
+    padding: 5px;
+}
+
+.input-box {
+    display: inline-block;
+    margin: 5px;
+}
+
+.setup-parent {
+    width: 500px;
+    height: auto;
+    background-color: #fff;
+    margin-left: 300px;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-left: 300px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.form-parent input[type="password"] {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}

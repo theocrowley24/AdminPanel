@@ -1,0 +1,57 @@
+﻿@model AdminPanel.Models.EditCase
+
+@{
+    ViewBag.Title = "Edit Case";
+    Permissions permissions = new Permissions();
+    permissions.setupPerms();
+}
+
+@using AdminPanel.Helpers
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/EditStaff.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/EditCase.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>Support case #@Model.id</h2>
+</div>
+
+<div class="info-box-parent">
+    <h3>ID: </h3><p>@Model.id</p><br />
+    <h3>Staff: </h3><p>@Model.staffUsername</p><br />
+    <h3>Player: </h3><p>@Model.playerName</p><br />
+    <h3>Description:</h3><br />
+    <p>@Model.description</p><br />
+    <h3>Type: </h3><p>@Model.type</p><br />
+    <h3>Open: </h3><p>@Model.openString</p><br />
+    <h3>Time: </h3><p>@Model.time</p><br />
+    @if (Model.open == 1)
+    {
+        using (Html.BeginForm("CloseCase", "SupportCases", FormMethod.Get))
+        {
+            <input type="hidden" name="id" value="@Model.id" />
+            <br /><input type="submit" id="update-licenses" value="Close" />
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("OpenCase", "SupportCases", FormMethod.Get))
+        {
+            <input type="hidden" name="id" value="@Model.id" />
+            <br /><input type="submit" id="update-licenses" value="Open" />
+        }
+    }
+
+    @if (permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.DeleteSupportCase))
+    {
+
+        using (Html.BeginForm("DeleteCase", "SupportCases", FormMethod.Get))
+        {
+        <input type="hidden" name="id" value="@Model.id" />
+        <br /><input type="submit" id="update-licenses" value="Delete" />
+        }
+
+    }
+</div>

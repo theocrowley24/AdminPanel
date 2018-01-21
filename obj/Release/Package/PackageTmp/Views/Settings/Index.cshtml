@@ -1,0 +1,106 @@
+﻿@model AdminPanel.Models.Settings
+@using AdminPanel.Helpers
+@using System.ComponentModel.DataAnnotations
+@{
+    ViewBag.Title = "Settings";
+
+    Model.getRanks();
+}
+
+
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Settings.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>Settings</h2>
+</div>
+
+
+@if (Permissions.hasPermission(Session["accessLevel"].ToString(), Permissions.perms.CreateStaffRank))
+{
+
+    <div class="page-title">
+        <h2>Add staff rank</h2>
+    </div>
+
+    <div class="staff-ranks-parent">
+        <div class="create-rank-parent">
+            @using (Html.BeginForm("CreateRank", "Settings", FormMethod.Post))
+            {
+                <div class="input-box"> @Html.TextBoxFor(model => model.rankName, new { placeholder = "Rank name" })</div><br />
+                <div class="toggle-buttons">
+                    @foreach (Permissions.perms perm in Enum.GetValues(typeof(Permissions.perms)))
+                    {
+                        <div class="toggle-button">
+                                <span>@Html.CheckBox("permissions", false, new { id = perm }) @Html.Label(perm.GetEnumDisplayName(), new { @for = perm })</span>
+                        </div>
+
+                    }
+                </div>
+                <input type="submit" id="add" value="Add" />
+            }
+        </div>
+    </div>
+
+    <div class="page-title">
+        <h2>Edit staff ranks</h2>
+    </div>
+
+    <div class="staff-ranks-parent">
+        <div class="create-rank-parent">
+
+            @using (Html.BeginForm("SelectRank", "Settings", FormMethod.Post))
+            {
+                <select name="rank" id="rank" onchange="this.form.submit()">
+                    <option value="SelectRank">
+                        Select rank
+                    </option>
+
+                    @foreach (var item in Model.ranks)
+                    {
+                        if (Model.rank == item)
+                        {
+                            <option value="@item" selected>
+                                @item
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="@item">
+                                @item
+                            </option>
+                        }
+
+                    }
+                </select>
+            }
+
+            @using (Html.BeginForm("EditRank", "Settings", FormMethod.Post))
+            {
+                <div class="toggle-buttons">
+                    @foreach (Permissions.perms perm in Enum.GetValues(typeof(Permissions.perms)))
+                    {
+                        if (Model.hasRank(perm))
+                        {
+                            <div class="toggle-button">
+                                <span>@Html.CheckBox("updatedPermissions", true, new { id = perm + "Edit" }) @Html.Label(perm.GetEnumDisplayName(), new { @for = perm + "Edit" })</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="toggle-button">
+                                <span>@Html.CheckBox("updatedPermissions", false, new { id = perm + "Edit" }) @Html.Label(perm.GetEnumDisplayName(), new { @for = perm + "Edit" })</span>
+                            </div>
+                        }
+                    }
+                </div>
+                @Html.HiddenFor(model => model.rank, new { value = Model.rank })
+                <input type="submit" id="add" value="Update" />
+            }
+        </div>
+    </div>
+
+}

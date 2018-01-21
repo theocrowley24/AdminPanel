@@ -1,0 +1,46 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    /*Sets all the background stuff*/
+    background-color: #E8F1F2;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.page-title {
+    margin-left: 300px;
+    margin-top: 100px;
+    font-size: 30pt;
+    color: #247ba0;
+}
+
+.page-sub-title {
+    margin-left: 300px;
+    margin-top: 100px;
+    font-size: 30pt;
+    color: #247ba0;
+}
+
+.page-title h3 {
+    margin-left: 50px;
+    color: #b2b2b2;
+    font-size: 20pt;
+}

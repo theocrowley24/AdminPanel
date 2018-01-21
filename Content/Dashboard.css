@@ -1,0 +1,48 @@
+﻿.server-stats-parent {
+    width: 80%;
+    height: 300px;
+    margin-left: 300px;
+    margin-right: 50px;
+    margin-top: 100px;
+}
+
+.server-stats-parent h2 {
+    color: #fff;
+    font-weight: normal;
+    font-size: 50pt;
+    padding: 10px;
+}
+
+.server-stats-parent h3 {
+    color: #fff;
+    font-weight: normal;
+    font-size: 20pt;
+    padding: 10px;
+}
+
+.total-money-parent {
+    width: 400px;
+    height: 200px;
+    margin-left: 50px;
+    background-color: #006494;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.total-players-parent {
+    width: 400px;
+    height: 200px;
+    margin-left: 50px;
+    background-color: #1b98e0;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.total-vehicles-parent {
+    width: 400px;
+    height: 200px;
+    margin-left: 50px;
+    background-color: #006494;
+    display: inline-block;
+    border-radius: 5px;
+}

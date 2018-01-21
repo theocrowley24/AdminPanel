@@ -1,0 +1,45 @@
+﻿@model AdminPanel.Models.Setup
+
+@{
+    ViewBag.Title = "Set up";
+}
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Setup.css" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="page-title">
+    <h2>Panel setup</h2>
+</div>
+
+<div class="setup-parent">
+    <div class="form-parent">
+        @using (Html.BeginForm("Setup", "Setup", FormMethod.Post))
+        {
+            <h3>Community information</h3>
+            <div class="input-box"> @Html.TextBoxFor(model => model.communityName, new { placeholder = "Name", style="width: 300px;" }) </div><br />
+
+            <h3>Root account information (This will generate a new account if one already exists)</h3>
+            <div class="input-box"> @Html.TextBoxFor(model => model.username, new { placeholder = "Username" }) </div>
+            <div class="input-box"> @Html.PasswordFor(model => model.password, new { placeholder = "Password" }) </div><br />
+
+            <h3>Database information</h3>
+            <div class="input-box"> @Html.TextBoxFor(model => model.dbUsername, new { placeholder = "Username" }) </div>
+            <div class="input-box"> @Html.PasswordFor(model => model.dbPassword, new { placeholder = "Password", style = "width: 200px;" }) </div><br />
+            <div class="input-box"> @Html.TextBoxFor(model => model.dbName, new { placeholder = "Name" }) </div>
+            <div class="input-box"> @Html.TextBoxFor(model => model.dbAddress, new { placeholder = "IP Address", style = "width: 200px;" }) </div>
+            <div class="input-box"> @Html.TextBoxFor(model => model.dbPort, new { placeholder = "Port" }) </div> <br />
+
+            <input type="submit" id="update" value="Complete setup" />
+        }
+    </div>
+</div>
+
+@if (Model.failed)
+ {
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Fields cannot be left blank!
+    </div>
+}

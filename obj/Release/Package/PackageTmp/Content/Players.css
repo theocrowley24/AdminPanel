@@ -1,0 +1,38 @@
+﻿.players-table-parent {
+    margin-left: 300px;
+    margin-right: 40px;
+    margin-top: 50px;
+    background-color: #ffffff;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.players-table-parent td {
+    padding: 10px;
+}
+
+.player-name-search-box-parent {
+    position: relative;
+}
+
+.player-name-search-box-parent input[type="text"] {
+    background-color: #e8f1f2;
+    width: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.player-name-search-box-parent select {
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e8f1f2;
+    border-radius: 10px;
+}
+

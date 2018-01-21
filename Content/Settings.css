@@ -1,0 +1,97 @@
+﻿.staff-ranks-parent {
+    background-color: #fff;
+    border-radius: 5px;
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    min-height: 350px;
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+.create-rank-parent {
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    margin-top: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.create-rank-parent input {
+    display: inline-block;
+}
+
+
+.create-rank-parent input[type="text"] {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}
+
+.create-rank-parent input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.create-rank-parent textarea {
+    background-color: #e8f1f2;
+    padding: 10px;
+    border-radius: 5px;
+    width: 500px;
+    height: 100px;
+}
+
+.input-box {
+    display: inline-block;
+    margin: 5px;
+}
+
+.create-rank-parent select {
+    background-color: #e8f1f2;
+    height: 60px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.create-rank-parent option {
+    padding: 10px;
+    border: 0;
+}
+
+.toggle-button {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.toggle-button input {
+    display: none;
+}
+
+.toggle-button input:checked ~ label {
+    background-color: #1b98e0;
+    color: #fff;
+}
+
+.toggle-buttons input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+label {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+}

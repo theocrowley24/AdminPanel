@@ -1,0 +1,55 @@
+﻿.create-support-case-parent {
+    width: 600px;
+    height: auto;
+    background-color: #fff;
+    margin-left: 300px;
+    margin-top: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.create-support-case-parent input {
+    display: inline-block;
+}
+
+.create-support-case-parent input[type="text"] {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}
+
+.create-support-case-parent input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.create-support-case-parent textarea {
+    background-color: #e8f1f2;
+    padding: 10px;
+    border-radius: 5px;
+    width: 500px;
+    height: 100px;
+}
+
+.input-box {
+    display: inline-block;
+    margin: 5px;
+}
+
+.create-support-case-parent select {
+    background-color: #e8f1f2;
+    height: 60px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.create-support-case-parent option {
+    padding: 10px;
+    border: 0;
+}

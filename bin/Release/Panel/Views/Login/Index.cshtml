@@ -1,0 +1,41 @@
+﻿
+@{
+    
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!-- Div containing the log in box parent -->
+    <div class="log-in-box-parent">
+        <h2>Log in</h2>
+
+        <div class="log-in-form">
+            @model AdminPanel.Models.User
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                @Html.TextBoxFor(model => model.Username, new { placeholder = "Username" })
+                @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
+                <input type="submit" id="login" value="Log in"/>
+            }
+
+        </div>
+    </div>
+
+    @if (!Model.verified)
+            {
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Error loggin in
+        </div>
+    }
+</body>
+
+
+

@@ -1,0 +1,167 @@
+﻿.info-parent {
+    width: 50%;
+    height: 350px;
+    margin-left: 300px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #e8f1f2;
+    border-radius: 5px 5px 0px 0px;;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    border-top: 1px solid #ccc;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #1b98e0;
+    color: #fff;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #1b98e0;
+    color: #fff;
+}
+
+/* Style the tab content */
+.tab-content {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+}
+
+.tab-content h3 {
+    padding: 10px;
+    font-weight: normal;
+    font-size: 15pt;
+}
+
+.form-parent-stats input {
+    display: inline-block;
+}
+
+.form-parent-stats input[type="text"] {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+    padding: 5px;
+}
+
+.form-parent-stats input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.input-box {
+    display: inline-block;
+    margin: 5px;
+}
+
+
+.vis-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+label {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e8f1f2;
+}
+
+.toggle-button {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.toggle-button input {
+    display: none;
+}
+
+.toggle-button input:checked ~ label {
+    background-color: #1b98e0;
+    color: #fff;
+}
+
+.toggle-buttons input[type="submit"] {
+    background-color: #1b98e0;
+    color: #fff;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.vehicles-table-parent {
+    margin-left: 300px;
+    margin-right: 40px;
+    margin-top: 30px;
+    background-color: #ffffff;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.vehicles-table-parent td {
+    padding: 10px;
+}
+
+.vehicles-table-parent {
+    position: relative;
+}
+
+.vehicles-table-parent select {
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e8f1f2;
+    border-radius: 10px;
+}
+
+.gear-box {
+    width: 100%;
+    height: 75px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.gear-box textarea {
+    width: 90%;
+    height: 100%;
+    border: 0px;
+    resize: none;
+    background-color: #e8f1f2;
+    padding: 10px;
+}
