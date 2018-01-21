@@ -33,6 +33,7 @@ Once IIS has been installed you need to add a new website, the compiled version 
 
 Once IIS has been installed and you have the web site added visit the URL in the panel and naviagte to /Setup this will run you through setting the database parameters as well as creating a root account
 
+NOTE - Currently the community name will not be set after setup this will be fixed soon however you can manually set it in the Web.Config file and the appsettings section.
 ## Updating
 
 Updating is as simple as getting the latest compiled files and replacing them.
