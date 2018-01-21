@@ -18,6 +18,17 @@ Theo's panel is a free server/database management tool for Arma 3 Altis Life. It
 * Dashboard containing server stats such as total players
 * Many more features to come!
 
+## Images
+
+### Dashboard
+![alt text](https://i.gyazo.com/0a041657ebf2067ec7430d26ed82932d.png)
+### Players
+![alt text](https://i.gyazo.com/f942c6a78f9043ba67a24fe8697cf572.png)
+### Edit player
+![alt text](https://i.gyazo.com/8979c613e52d95edd26448784b7b23b4.png)
+### Support cases
+![alt text](https://i.gyazo.com/77424bcf9f52826e2091d851ff28350d.png)
+
 ## Requirements
 
 * Windows server
