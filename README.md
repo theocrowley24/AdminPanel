@@ -34,7 +34,7 @@ Theo's panel is a free server/database management tool for Arma 3 Altis Life. It
 * Windows server
 * IIS
 
-This panel has been written using ASP.NET MVC and has not been tested on Apache/Linux, however it may be possible using Mono.
+This panel has been written using ASP.NET MVC and has not been tested on Apache/Linux, however it may be possible using Mono. An in-depth apache setup tutorial will be coming soon.
 
 ## Installation
 
