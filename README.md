@@ -36,6 +36,10 @@ Theo's panel is a free server/database management tool for Arma 3 Altis Life. It
 
 This panel has been written using ASP.NET MVC and has not been tested on Apache/Linux, however it may be possible using Mono. An in-depth apache setup tutorial will be coming soon.
 
+## Coming soon
+
+* Battleye RCON support
+
 ## Installation
 
 I reccommend using IIS to run this site, to install IIS find the tutorial relevant to your version of windows server. Such as the following https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-8/installing-iis-8-on-windows-server-2012
